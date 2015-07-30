@@ -5,9 +5,10 @@
 
   <% @items.each do |item| %>
     <ul>
-      <li><%= link_to item.title, item %> | <%= link_to 'edit', edit_item_path(item) %> | <%= link_to 'delete', item_path(item), method: :delete, data: {
+      <li>
+        <%= item.compeleted %> | <%= link_to item.title, item %> | <%= link_to 'edit', edit_item_path(item) %> | <%= link_to 'delete', item_path(item), method: :delete, data: {
         confirm: 'Are you sureeeeeee?'
-      } %></li>
+      } %> | <%= link_to 'complete', "/items/#{item.id}/complete", method: :put %></li>
     </ul>
   <% end %>
 

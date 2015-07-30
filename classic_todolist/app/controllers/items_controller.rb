@@ -44,9 +44,21 @@ class ItemsController < ApplicationController
     redirect_to root_path
   end
 
+  def complete
+    @item = Item.find(params[:id])
+
+    if @item.toggle!(:compeleted)
+      redirect_to @item
+    else
+      @error = "Item didn't update"
+      render 'edit'
+    end
+  end
+
   private
 
   def item_params
     params.require(:item).permit(:title)
   end
+
 end

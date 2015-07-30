@@ -18,8 +18,9 @@ ActiveRecord::Schema.define(version: 20150730180815) do
 
   create_table "items", force: true do |t|
     t.string   "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "compeleted", default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
 end
