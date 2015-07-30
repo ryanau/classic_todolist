@@ -1,6 +1,8 @@
 <h1>todos</h1>
 <div>
-  <%= link_to 'new task', new_item_path %>
+
+  <%= render 'form' %>
+
   <% @items.each do |item| %>
     <ul>
       <li><%= link_to item.title, item %> | <%= link_to 'edit', edit_item_path(item) %> | <%= link_to 'delete', item_path(item), method: :delete, data: {
