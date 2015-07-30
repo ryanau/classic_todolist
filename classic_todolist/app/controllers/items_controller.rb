@@ -45,10 +45,10 @@ class ItemsController < ApplicationController
   end
 
   def complete
-    @item = Item.find(params[:id])
+    @item = Item.find(params[:item_id])
 
     if @item.toggle!(:compeleted)
-      redirect_to @item
+      redirect_to root_path
     else
       @error = "Item didn't update"
       render 'edit'
