@@ -1,8 +1,12 @@
 <h1>todos</h1>
 <div>
+  <%= link_to 'new task', new_item_path %>
   <% @items.each do |item| %>
     <ul>
-      <li><%= link_to item.title, item %></li>
+      <li><%= link_to item.title, item %> | <%= link_to 'edit', edit_item_path(item) %> | <%= link_to 'delete', item_path(item), method: :delete, data: {
+        confirm: 'Are you sureeeeeee?'
+      } %></li>
     </ul>
   <% end %>
+
 </div>
