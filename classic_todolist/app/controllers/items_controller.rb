@@ -1,7 +1,6 @@
 class ItemsController < ApplicationController
   def index
-    @items = Item.all
-    @item = Item.new
+    render json: Item.all.order(created_at: :desc)
   end
 
   def show
@@ -16,10 +15,10 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
 
     if @item.save
-      redirect_to root_path
+
     else
       @error = "Item didn't save"
-      render 'new'
+
     end
   end
 
@@ -31,10 +30,10 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
 
     if @item.update(item_params)
-      redirect_to @item
+
     else
       @error = "Item didn't update"
-      render 'edit'
+
     end
   end
 

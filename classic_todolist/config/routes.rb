@@ -1,8 +1,16 @@
 Rails.application.routes.draw do
-  root 'items#index'
+  get 'client/show'
 
-  # put 'items/:id/complete', to: 'items#complete'
-  resources :items do
-    get :complete
+  ACCEPTS_JSON = lambda { |request|
+    request.accepts.include?(:json)
+  }
+
+  scope constraints: ACCEPTS_JSON do
+    resources :items do
+      get :complete
+    end
   end
+
+  get '*path', to: 'client#show'
+  root to: 'client#show'
 end

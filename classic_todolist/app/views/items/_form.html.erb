@@ -1,8 +1,0 @@
-<%= form_for @item do |f| %>
-  <%= f.text_field :title, placeholder:'what needs to be done?', required: true %>
-  <%= f.submit class: 'hidden' %>
-  <% if @item.id %>
-  <%= link_to 'back to item', @item %>
-  <% end %>
-<% end %>
-<%= @error %>
